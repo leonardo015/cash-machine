@@ -2,7 +2,7 @@
 
 ## Available Scripts
 
-First of all: Install the dependencies by running `npm install` in the project directory
+First of all: Install the dependencies by running `npm install` in the project directory.
 
 ### `npm start`
 
