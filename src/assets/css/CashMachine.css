@@ -1,0 +1,104 @@
+@import "../../../node_modules/animate.css/animate.min.css";
+
+.cash-machine {
+  width: 360px;
+  height: 570px;
+  background-image: url("../media/atm.png");
+  background-repeat: no-repeat;  
+  background-position: center center;
+  position: relative;
+}
+
+.cash-machine .error {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 175px;
+  height: 135px;
+  position: absolute;
+  left: 55px;
+  top: 145px;
+  background-color: #9E6300;
+  text-align: center;
+  color: #fefefe;
+}
+.cash-machine .close-error-btn {
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 2px 16px;
+  background: #3AA056;
+  color: #fefefe;
+  cursor: pointer;
+  outline: 0;
+}
+
+.cash-machine form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 175px;
+  height: 135px;
+  position: absolute;
+  left: 55px;
+  top: 145px;
+}
+
+.cash-machine form label {
+  display: block;
+  color: #fefefe;
+  text-align: center;
+}
+.cash-machine form input[type="number"] {
+  width: 80px;
+  background: black;
+  color: #98B223;
+  border-color:#008574;
+  border-radius: 4px;
+  padding: 2px 4px;
+  text-align: center;
+  outline: 0;
+}
+.cash-machine form input[type="submit"] {
+  background: #98B223;
+  border: none;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 2px 16px;
+  color: #333;
+  cursor: pointer;
+  outline: 0;
+}
+
+.cash-machine .withdrawn-notes {
+  position: absolute;
+  right: 56px;
+  top: 275px;
+  margin: 0;
+  padding: 0;
+}
+.cash-machine .withdrawn-notes .note {
+  width: 45px;
+  height: 26px;
+  background-repeat: no-repeat;
+  list-style: none;
+  margin-bottom: 2px;
+  box-shadow: -1px 0px 2px 0px #2F4858;
+  /* animation-delay: 2s; */
+}
+.cash-machine .note-100 {
+  background-image: url("../media/hundred-note.png");
+}
+.cash-machine .note-50 {
+  background-image: url("../media/fifty-note.png");
+}
+.cash-machine .note-20 {
+  background-image: url("../media/twenty-note.png");
+}
+.cash-machine .note-10 {
+  background-image: url("../media/ten-note.png");
+}

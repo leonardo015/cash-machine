@@ -17,6 +17,7 @@ class CashMachineContainer extends Component {
     this.validateRequestedAmount = this.validateRequestedAmount.bind(this);
     this.processWithdrawal = this.processWithdrawal.bind(this);
     this.sortNotes = this.sortNotes.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
   }
   
   /**
@@ -36,13 +37,13 @@ class CashMachineContainer extends Component {
     let errors = {};
     if (!requestedAmount) {
       const errorMsg = "Please, enter the amount";
-      errors.RequestedAmount = errorMsg;
+      errors.requestedAmount = errorMsg;
       this.setState({errors});
       throw new Error(errorMsg);
     }
     if (!Number.isInteger(requestedAmount / 10)) {
-      const errorMsg = "The chosen amount is not valid. Available notes are 100, 50, 20 and 10. Tip: Choose a number multiple of 10.";
-      errors.RequestedAmount = errorMsg;
+      const errorMsg = "Invalid amount. Available notes are 100, 50, 20 and 10.";
+      errors.requestedAmount = errorMsg;
       this.setState({errors});
       throw new Error(errorMsg);
     }
@@ -70,14 +71,24 @@ class CashMachineContainer extends Component {
    * Processes the withdrawl
    */
   processWithdrawal() {
-    const { requestedAmount } = this.state;
-    try {
-      this.validateRequestedAmount(requestedAmount);
-    } catch (error) {
-      console.error(error);
-      return false;
-    }
-    this.sortNotes(requestedAmount);
+    this.setState({withdrawnNotes: []}, ()=>{
+
+      const { requestedAmount } = this.state;
+      try {
+        this.validateRequestedAmount(requestedAmount);
+      } catch (error) {
+        console.error(error);
+        return false;
+      }
+      this.sortNotes(requestedAmount);
+    });
+  }
+
+  /**
+   * Clears the errors object in state
+   */
+  clearErrors() {
+    this.setState({errors: {}});
   }
 
   /**
@@ -92,6 +103,7 @@ class CashMachineContainer extends Component {
         processWithdrawal={this.processWithdrawal}
         withdrawnNotes={withdrawnNotes}
         errors={errors}
+        clearErrors={this.clearErrors}
         />
     );
   }
